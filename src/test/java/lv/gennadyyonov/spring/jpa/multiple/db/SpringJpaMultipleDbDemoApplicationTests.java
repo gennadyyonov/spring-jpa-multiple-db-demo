@@ -9,5 +9,4 @@ class SpringJpaMultipleDbDemoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

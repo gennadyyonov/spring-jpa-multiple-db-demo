@@ -1,1 +1,32 @@
-
+multiple-db:
+  persistence:
+    data-source:
+      user:
+        type-name: org.h2.jdbcx.JdbcDataSource
+        url: jdbc:h2:file:./appdata/user;FILE_LOCK=SOCKET
+        username: sa
+        password:
+        driverClassName: org.h2.Driver
+      product:
+        type-name: org.hsqldb.jdbc.JDBCDataSource
+        url: jdbc:hsqldb:file:./appdata/product;hsqldb.lock_file=false;shutdown=true;hsqldb.write_delay=false;
+        username: sa
+        password:
+        driverClassName: org.hsqldb.jdbc.JDBCDriver
+    jpa:
+      user:
+        database-platform: org.hibernate.dialect.H2Dialect
+        properties:
+          hibernate.show_sql: true
+          hibernate.use_sql_comments: false
+          hibernate.format_sql: true
+          hibernate.dialect: org.hibernate.dialect.H2Dialect
+          javax.persistence.schema-generation.database.action: update
+      product:
+        database-platform: org.hibernate.dialect.HSQLDialect
+        properties:
+          hibernate.show_sql: true
+          hibernate.use_sql_comments: false
+          hibernate.format_sql: true
+          hibernate.dialect: org.hibernate.dialect.HSQLDialect
+          javax.persistence.schema-generation.database.action: update
